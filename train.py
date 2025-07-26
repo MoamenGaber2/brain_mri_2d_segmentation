@@ -1,9 +1,9 @@
+import tensorflow as tf
+from tensorflow import keras
+from keras import optimizers
+from keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau, CSVLogger, TensorBoard
 import os
 import numpy as np
-import tensorflow as tf
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau, CSVLogger, TensorBoard
-from tensorflow.keras import optimizers
-
 from src.model import UNetModel
 from src.utils.data_preparing import shuffling, create_dataset
 from src.utils.data_loader import load_processed_folder, create_dir
@@ -13,15 +13,15 @@ if __name__ == "__main__":
     np.random.seed(42)
     tf.random.set_seed(42)
 
-    create_dir("outputs/files")
+    create_dir("brain_mri_2d_segmentation/outputs/files")
 
     batch_size = 32
     lr = 1e-4
     num_epochs = 100
-    model_path = os.path.join("outputs/files", "model.h5")
-    csv_path = os.path.join("outputs/files", "data.csv")
+    model_path = os.path.join("brain_mri_2d_segmentation/outputs/files", "model.h5")
+    csv_path = os.path.join("brain_mri_2d_segmentation/outputs/files", "data.csv")
 
-    dataset_path = "data/processed_data"
+    dataset_path = "brain_mri_2d_segmentation/data/preprocessed"
     train_path = os.path.join(dataset_path, "train")
     valid_path = os.path.join(dataset_path, "valid")
 

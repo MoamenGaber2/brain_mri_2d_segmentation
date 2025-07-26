@@ -1,5 +1,6 @@
 import tensorflow as tf
-from tensorflow.keras import layers
+from tensorflow import keras
+from keras import layers
 
 class UNetModel(tf.keras.Model):
     def __init__(self, input_shape = (256, 256, 1)):

@@ -1,6 +1,8 @@
+import tensorflow as tf
+from tensorflow import keras
+from keras.models import load_model
 import os
 import numpy as np
-import tensorflow as tf
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from src.utils.data_loader import load_test_data, create_dir, load_processed_folder, shuffling
 from src.losses import dice_loss, dice_coef, iou_coef, iou_coef_test
@@ -59,10 +61,10 @@ if __name__ == "__main__":
     custom_objects = {'dice_loss':dice_loss,
                  'dice_coef':dice_coef,
                  'iou_coef': iou_coef}
-    final_model = tf.keras.models.load_model('outputs/files/model.h5', custom_objects = custom_objects)
+    final_model = load_model("brain_mri_2d_segmentation/outputs/files/model.h5", custom_objects = custom_objects)
 
     # Create test dataset with proper resizing
-    dataset_path = "data/processed_data"
+    dataset_path = "brain_mri_2d_segmentation/data/preprocessed"
     test_path = os.path.join(dataset_path, "test")
     test_x, test_y = load_processed_folder(test_path)
     test_x, test_y = shuffling(test_x, test_y)
@@ -74,6 +76,6 @@ if __name__ == "__main__":
     for metric, value in metrics.items():
         print(f"{metric}: {value:.4f}")
     
-    create_dir("outputs/predictions")
-    output_path = 'outputs/predictions'
+    create_dir("brain_mri_2d_segmentation/outputs/predictions")
+    output_path = 'brain_mri_2d_segmentation/outputs/predictions'
     save_predictions(test_dataset, y_pred, output_path)
