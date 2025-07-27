@@ -13,15 +13,15 @@ if __name__ == "__main__":
     np.random.seed(42)
     tf.random.set_seed(42)
 
-    create_dir("brain_mri_2d_segmentation/outputs/files")
+    create_dir("outputs/files")
 
     batch_size = 32
     lr = 1e-4
     num_epochs = 100
-    model_path = os.path.join("brain_mri_2d_segmentation/outputs/files", "model.h5")
-    csv_path = os.path.join("brain_mri_2d_segmentation/outputs/files", "data.csv")
+    model_path = os.path.join("outputs/files", "model.h5")
+    csv_path = os.path.join("outputs/files", "data.csv")
 
-    dataset_path = "brain_mri_2d_segmentation/data/preprocessed"
+    dataset_path = "data/preprocessed"
     train_path = os.path.join(dataset_path, "train")
     valid_path = os.path.join(dataset_path, "valid")
 

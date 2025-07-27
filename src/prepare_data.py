@@ -52,19 +52,19 @@ def augment_data(images, masks, save_path, augment = True):
             idx += 1
 
 if __name__ == "__main__":
-    create_dir("brain_mri_2d_segmentation/data/extracted_data")
-    extract_h5("brain_mri_2d_segmentation/data/hdf5_data", "brain_mri_2d_segmentation/data/extracted_data")
+    create_dir("../data/extracted_data")
+    extract_h5("../data/hdf5_data", "../data/extracted_data")
     
-    data_dir = "brain_mri_2d_segmentation/data/extracted_data"
+    data_dir = "../data/extracted_data"
     (train_x, train_y), (test_x, test_y), (valid_x, valid_y) = load_raw_split(data_dir, split = 0.8)
 
-    create_dir("brain_mri_2d_segmentation/data/preprocessed/train/images")
-    create_dir("brain_mri_2d_segmentation/data/preprocessed/train/masks")
-    create_dir("brain_mri_2d_segmentation/data/preprocessed/valid/images")
-    create_dir("brain_mri_2d_segmentation/data/preprocessed/valid/masks")
-    create_dir("brain_mri_2d_segmentation/data/preprocessed/test/images")
-    create_dir("brain_mri_2d_segmentation/data/preprocessed/test/masks")
+    create_dir("../data/preprocessed/train/images")
+    create_dir("../data/preprocessed/train/masks")
+    create_dir("../data/preprocessed/valid/images")
+    create_dir("../data/preprocessed/valid/masks")
+    create_dir("../data/preprocessed/test/images")
+    create_dir("../data/preprocessed/test/masks")
 
-    augment_data(train_x, train_y, "brain_mri_2d_segmentation/data/preprocessed/train/",augment = True)
-    augment_data(valid_x, valid_y, "brain_mri_2d_segmentation/data/preprocessed/valid/",augment = False)
-    augment_data(test_x, test_y, "brain_mri_2d_segmentation/data/preprocessed/test/",augment = False)
+    augment_data(train_x, train_y, "../data/preprocessed/train/",augment = True)
+    augment_data(valid_x, valid_y, "../data/preprocessed/valid/",augment = False)
+    augment_data(test_x, test_y, "../data/preprocessed/test/",augment = False)

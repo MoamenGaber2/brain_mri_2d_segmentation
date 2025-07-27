@@ -61,10 +61,10 @@ if __name__ == "__main__":
     custom_objects = {'dice_loss':dice_loss,
                  'dice_coef':dice_coef,
                  'iou_coef': iou_coef}
-    final_model = load_model("brain_mri_2d_segmentation/outputs/files/model.h5", custom_objects = custom_objects)
+    final_model = load_model("outputs/files/model.h5", custom_objects = custom_objects)
 
     # Create test dataset with proper resizing
-    dataset_path = "brain_mri_2d_segmentation/data/preprocessed"
+    dataset_path = "data/preprocessed"
     test_path = os.path.join(dataset_path, "test")
     test_x, test_y = load_processed_folder(test_path)
     test_x, test_y = shuffling(test_x, test_y)
@@ -76,6 +76,6 @@ if __name__ == "__main__":
     for metric, value in metrics.items():
         print(f"{metric}: {value:.4f}")
     
-    create_dir("brain_mri_2d_segmentation/outputs/predictions")
-    output_path = 'brain_mri_2d_segmentation/outputs/predictions'
+    create_dir("outputs/predictions")
+    output_path = 'outputs/predictions'
     save_predictions(test_dataset, y_pred, output_path)
