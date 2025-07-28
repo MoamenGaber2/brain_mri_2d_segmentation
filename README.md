@@ -17,6 +17,12 @@ I used the **"Digital Medical Images For Download Resource"** dataset, which pro
 liver_ct_segmentation/
 │
 
+├── GUI/
+
+│ ├── GUI_final #python file containing the GUI code
+
+│
+
 ├── data/
 
 │ ├── hdf5_data/ # Original Kaggle data (not uploaded)
