@@ -14,7 +14,7 @@ I used the **"Digital Medical Images For Download Resource"** dataset, which pro
 
 ## Pipeline Overview
 
-liver_ct_segmentation/
+brain_mri_2d_segmentation/
 │
 
 ├── GUI/
